@@ -40,50 +40,28 @@ public class Animal {
      */
      public Animal(final int animalAge, final String animalSpecies,
                 final boolean animalCarnivore, final boolean animalHerbivore,
-                final String animalSound) {
+             final String animalSound) {
 
-        // Initialize properties of the animal
-        this.age = animalAge;
-        this.species = animalSpecies;
-        this.carnivore = animalCarnivore;
-        this.herbivore = animalHerbivore;
-        this.sound = animalSound;
-    }
+         // Initialize properties of the animal
+         this.age = animalAge;
+         this.species = animalSpecies;
+         this.carnivore = animalCarnivore;
+         this.herbivore = animalHerbivore;
+         this.sound = animalSound;
+     }
 
-    /**
-     * Eat method.
+     /**
+     * Pause method.
      */
-    public void eat() {
+    public void pause() {
 
-        // If the animal is a carnivore
-        if (carnivore) {
-            // Display that the animal eats meat
-            System.out.println("The " + species
-            + " eats meat for breakfast to prepare for the competition.");
-
-        // If the animal is an herbivore
-        } else if (herbivore) {
-
-            // Display that the animal eats plants
-            System.out.println("The " + species
-            + " eats plants for breakfast to prepare for the competition.");
-        // If the animal is an omnivore
-        } else {
-            // Display that the animal eats plants and meat
-            System.out.print("The " + species
-            + " eats plants and meat for breakfast");
-            System.out.println(" to prepare for the competition.");
-        }
-
-        // try to catch any interruptions during the wait
         try {
+            // Wait for 3 seconds (3000 milliseconds)
             // Source:
             //https://medium.com/@adam.rizk9/demystifying-javas-sleep-and-...
             //...wait-methods-a-comprehensive-guide-bcdfeb7b0e22
-            Thread.sleep(3000); // Wait for 3 seconds (3000 milliseconds)
-
-        // If there is an interruption
-        } catch (Exception exception) {
+            Thread.sleep(3000);
+        } catch (InterruptedException exception) {
 
             // Source:
             //https://stackoverflow.com/questions/4906799/why-invoke-thread-...
@@ -93,32 +71,21 @@ public class Animal {
     }
 
     /**
+     * Eat method.
+     */
+    public void eat() {
+
+        // Default eat method
+        System.out.println("The " + species + " is eating.");
+    }
+
+    /**
      * Sleep method.
      */
     public void sleep() {
 
-        // try to catch any interruptions during the wait
-        try {
-            // Wait for 3 seconds (3000 milliseconds)
-            Thread.sleep(3000);
-
-        // If there is an interruption
-        } catch (Exception exception) {
-
-            Thread.currentThread().interrupt();
-        }
-
         // Display that the animal is sleeping
         System.out.println("The " + species + " is sleeping.");
-
-        try {
-            // Wait for 6 seconds (6000 milliseconds)
-            Thread.sleep(6000);
-        } catch (InterruptedException exception) {
-
-            // If there is an interruption
-            Thread.currentThread().interrupt();
-        }
     }
 
     /**
@@ -147,13 +114,6 @@ public class Animal {
 
         // Display the sound the animal makes
         System.out.println("The " + species + " " + sound + "s!");
-
-        try {
-            // Wait for 3 seconds (3000 milliseconds)
-            Thread.sleep(3000);
-        } catch (InterruptedException exception) {
-            Thread.currentThread().interrupt();
-        }
     }
 
     /**
@@ -184,5 +144,8 @@ public class Animal {
             default:
                 System.out.println("There was a storm, no competition today.");
         }
+
+        // new line for better readability
+        System.out.println();
     }
 }

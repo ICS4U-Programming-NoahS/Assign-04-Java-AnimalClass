@@ -29,14 +29,21 @@ public final class Main {
      */
     public static void main(final String[] args) {
 
+        // Define constants for animal ages
+        // Random age between 1 and 20
+        int lionAge = (int) (Math.random() * 20 + 1);
+        int elephantAge = (int) (Math.random() * 20 + 1);
+        int penguinAge = (int) (Math.random() * 20 + 1);
+        int pigAge = (int) (Math.random() * 20 + 1);
+
         // Create an array of Animal objects with different species and ages
         Animal[] animals = {
 
             // Create instances of different animal species
-            new Lion(5),
-            new Elephant(10),
-            new Penguin(3),
-            new Pig(2)
+            new Lion(lionAge),
+            new Elephant(elephantAge),
+            new Penguin(penguinAge),
+            new Pig(pigAge)
         };
 
         // Display welcome message
@@ -49,9 +56,13 @@ public final class Main {
         // Go through each animal in the array and call their methods
         for (Animal animal : animals) {
             animal.info();
+            animal.pause();
             animal.sleep();
+            animal.pause();
             animal.sound();
+            animal.pause();
             animal.eat();
+            animal.pause();
             System.out.println();
         }
 
@@ -60,6 +71,7 @@ public final class Main {
 
         // Go through each animal in the array and call their sleep method
         for (Animal animal : animals) {
+            animal.pause();
             animal.sleep();
         }
 
